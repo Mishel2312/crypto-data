@@ -44,14 +44,16 @@ def candles(base, n=400, drift=0.001):
     return [[t0 + i * 86400000, p, p * 1.02, p * 0.98, p, 10, t0 + (i + 1) * 86400000 - 1, p * 1e6, 1, 0, 0, 0]
             for i, p in enumerate(px)]
 
+SERIES = {s: candles(p) for s, p in {"BTC": 85000, "ETH": 2700, "SOL": 120, "DOGE": 0.09}.items()}
+LAST = {s: k[-2][4] for s, k in SERIES.items()}  # last closed candle (the final one is still open)
+
 def fake_get(url, params=None, tries=3):
     if "coins/markets" in url:
         return [{"symbol": s, "id": s.lower(), "name": s, "current_price": p, "market_cap_rank": i + 1, "market_cap": 1e9,
-                 "total_volume": 1e8} for i, (s, p) in enumerate([("BTC", 85000), ("ETH", 2700), ("USDT", 1.0), ("WBTC", 85000),
-                                                                   ("SOL", 120), ("DOGE", 0.09)])]
+                 "total_volume": 1e8} for i, (s, p) in enumerate([("BTC", LAST["BTC"]), ("ETH", LAST["ETH"]), ("USDT", 1.0),
+                                                                   ("WBTC", LAST["BTC"]), ("SOL", LAST["SOL"]), ("DOGE", LAST["DOGE"])])]
     if "klines" in url:
-        sym = params["symbol"].replace("USDT", "")
-        return candles({"BTC": 85000, "ETH": 2700, "SOL": 120, "DOGE": 0.09}[sym])
+        return SERIES[params["symbol"].replace("USDT", "")]
     if "fng" in url:
         return {"data": [{"value": "67", "value_classification": "Greed"}] * 30}
     if "global" in url:
