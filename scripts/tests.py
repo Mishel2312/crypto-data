@@ -28,7 +28,16 @@ assert abs(fetch.rsi(s).iloc[-1] - ref) < 0.5, (fetch.rsi(s).iloc[-1], ref)  # e
 assert fetch.ema_stack(10, 9, 8, 7) == "bull"
 assert fetch.ema_stack(5, 6, 7, 8) == "bear"
 
-# 4. Full run with mocked sources
+# 4. Data validation: stale (delisted) series and wrong price are rejected
+today = pd.Timestamp.utcnow().tz_localize(None).normalize()
+fresh = pd.DataFrame({"close": np.linspace(100, 110, 60)}, index=pd.date_range(end=today - pd.Timedelta(days=1), periods=60))
+stale = fresh.copy(); stale.index = pd.date_range(end="2024-02-20", periods=60)
+assert fetch.series_problem(fresh, 111) is None
+assert "stale" in fetch.series_problem(stale, 110)
+assert "deviates" in fetch.series_problem(fresh, 549)
+assert fetch.series_problem(None, 1) == "missing"
+
+# 5. Full run with mocked sources
 def candles(base, n=400, drift=0.001):
     t0 = int(time.time() // 86400 - n) * 86400 * 1000
     px = base * np.exp(np.cumsum(rng.normal(drift, 0.03, n)))

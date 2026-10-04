@@ -25,6 +25,7 @@ TOP_N = 40  # fetch a bit more than top-30 so held coins that slip a few ranks s
 
 STABLES = {"USDT", "USDC", "DAI", "FDUSD", "TUSD", "USDE", "USDS", "USD1", "PYUSD", "USDD",
            "BUSD", "FRAX", "GHO", "RLUSD", "USDTB", "USDF", "SUSDE", "EUSDE", "USDG", "BFUSD", "USYC"}
+PEGGED = {"XAUT", "PAXG", "XAUM", "KAU"}  # gold-backed tokens: not a crypto bet, excluded from buying
 MEMES = {"DOGE", "SHIB", "PEPE", "BONK", "WIF", "FLOKI", "TRUMP", "FARTCOIN", "PENGU", "SPX",
          "BRETT", "POPCAT", "MOG", "PUMP"}
 WRAPPED = {"WBTC", "WETH", "STETH", "WSTETH", "WEETH", "CBBTC", "RETH", "METH", "LBTC", "SOLVBTC",
@@ -145,7 +146,7 @@ def universe():
     for d in data:
         sym = d["symbol"].upper()
         kind = ("stable" if sym in STABLES or (d.get("current_price") and abs(d["current_price"] - 1) < 0.02 and sym.startswith("USD"))
-                else "meme" if sym in MEMES else "wrapped" if sym in WRAPPED else "ok")
+                else "pegged" if sym in PEGGED else "meme" if sym in MEMES else "wrapped" if sym in WRAPPED else "ok")
         rows.append({"rank": d.get("market_cap_rank"), "symbol": sym, "id": d["id"], "name": d["name"], "kind": kind,
                      "price": d.get("current_price"), "market_cap": d.get("market_cap"), "volume_24h": d.get("total_volume"),
                      "chg_24h": r(d.get("price_change_percentage_24h_in_currency"), 2),
@@ -184,6 +185,23 @@ def coinbase_daily(sym: str) -> pd.DataFrame | None:
     df = df[df.index < pd.Timestamp.utcnow().tz_localize(None).normalize()]
     df["quote_volume"] = df["volume"] * df["close"]
     return df[["open", "high", "low", "close", "volume", "quote_volume"]].astype(float)
+
+
+MAX_STALE_DAYS = 3      # a delisted pair keeps returning old candles; reject them
+MAX_PRICE_DEV_PCT = 8   # last close vs CoinGecko spot; daily close vs live price legitimately differs a few %
+
+
+def series_problem(df: pd.DataFrame | None, ref_price: float | None) -> str | None:
+    if df is None or len(df) < 30:
+        return "too short" if df is not None else "missing"
+    age = (pd.Timestamp.utcnow().tz_localize(None).normalize() - df.index[-1]).days
+    if age > MAX_STALE_DAYS:
+        return f"stale, last candle {df.index[-1].date()}"
+    if ref_price:
+        dev = abs(df['close'].iloc[-1] / ref_price - 1) * 100
+        if dev > MAX_PRICE_DEV_PCT:
+            return f"price {df['close'].iloc[-1]:.6g} deviates {dev:.0f}% from CoinGecko {ref_price:.6g}"
+    return None
 
 
 def macro():
@@ -258,12 +276,17 @@ def main():
         if x["kind"] == "stable":
             continue
         sym = x["symbol"]
-        df = binance_daily(sym)
-        src = "binance"
-        if df is None or len(df) < 30:
-            df, src = coinbase_daily(sym), "coinbase"
-        if df is None or len(df) < 30:
-            errors.append(f"ohlc {sym}: no source")
+        df, src = None, None
+        for name, fn in (("binance", binance_daily), ("coinbase", coinbase_daily)):
+            cand = fn(sym)
+            problem = series_problem(cand, x.get("price"))
+            if problem is None:
+                df, src = cand, name
+                break
+            if cand is not None:
+                errors.append(f"ohlc {sym} {name}: {problem}")
+        if df is None:
+            errors.append(f"ohlc {sym}: no usable source")
             continue
         df.attrs["source"] = src
         frames[sym] = df
@@ -279,6 +302,8 @@ def main():
         ind = coin_indicators(frames[sym], btc if sym != "BTC" else None)
         coins.append({"symbol": sym, "name": x.get("name"), "rank": x.get("rank_clean"), "kind": x["kind"],
                       "market_cap": x.get("market_cap"), "volume_24h": x.get("volume_24h"),
+                      "price_now_coingecko": x.get("price"),
+                      "chg_7d_coingecko": x.get("chg_7d"),
                       "source": frames[sym].attrs.get("source"), **ind})
 
     snap = {"generated_at": gen, "note": "Daily candles are closed UTC days; 'close' is the last fully closed day.",
