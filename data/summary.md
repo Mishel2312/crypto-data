@@ -1,7 +1,7 @@
-# Market snapshot 2026-10-04T12:35:50Z
+# Market snapshot 2026-10-04T12:39:36Z
 
-Fear&Greed: 65 (Greed), 7d ago 70 · BTC dom 59.15% · mcap chg 24h -2.81%
-Funding (8h): BTC 0.0008%, ETH 0.0028%, SOL 0.01%
+Fear&Greed: 65 (Greed), 7d ago 70 · BTC dom 59.14% · mcap chg 24h -2.82%
+Funding (8h): BTC 0.001%, ETH 0.0029%, SOL 0.01%
 
 | Macro | close | 1d | 5d | 20d | trend vs EMA50 |
 |---|---|---|---|---|---|
@@ -22,7 +22,6 @@ Funding (8h): BTC 0.0008%, ETH 0.0028%, SOL 0.01%
 | 11 | HYPE | ok | 89.29 | 0.19 | -3.54 | 2.06 | bull | 53.7 | False | -2.14 | mixed | 28 |
 | 12 | DOGE | meme | 0.09282 | -0.12 | -4.04 | 5.69 | below200 | 53.5 | False | 1.35 | mixed | 72 |
 | 13 | LINK | ok | 14.116 | 2.33 | -0.21 | 19.29 | bull | 59.2 | False | 14.39 | up | 59 |
-| 14 | XMR | ok | 118.7 | 5.51 | -7.12 | -24.68 | bear | 38.3 | False | None | None | 8 |
 | 16 | ADA | ok | 0.2438 | -0.25 | -4.02 | 10.27 | above200 | 57.6 | False | 5.74 | up | 39 |
 | 19 | XLM | ok | 0.2161 | 0.28 | -0.18 | 17.13 | bull | 56.5 | False | 12.31 | up | 31 |
 | 20 | BCH | ok | 319.7 | 2.6 | -4.88 | 24.59 | above200 | 63.5 | False | 19.47 | up | 17 |
@@ -37,12 +36,15 @@ Funding (8h): BTC 0.0008%, ETH 0.0028%, SOL 0.01%
 | 33 | TAO | ok | 307.1 | 5.17 | -4.39 | 36.07 | bull | 60.6 | False | 30.47 | up | 44 |
 | 34 | CRO | ok | 0.0665 | -1.0 | -2.41 | 15.17 | above200 | 56.8 | False | 10.44 | up | 2 |
 | 35 | SHIB | meme | 5.75e-06 | 0.52 | -3.04 | 6.28 | above200 | 55.0 | False | 1.92 | down | 5 |
-| 36 | XAUT | ok | 4141.83 | -0.01 | -3.25 | -7.39 | bear_short | 34.4 | False | -11.2 | down | 32 |
+| 36 | XAUT | pegged | 4141.83 | -0.01 | -3.25 | -7.39 | bear_short | 34.4 | False | -11.2 | down | 32 |
 | 39 | PUMP | meme | 0.00627 | 16.46 | 42.69 | 45.11 | bull | 68.6 | False | 39.14 | up | 57 |
 
 Errors:
-- ohlc FIGR_HELOC: no source
-- ohlc LEO: no source
-- ohlc RAIN: no source
-- ohlc CC: no source
-- ohlc BTW: no source
+- ohlc FIGR_HELOC: no usable source
+- ohlc HYPE binance: too short
+- ohlc XMR binance: stale, last candle 2024-02-20
+- ohlc XMR: no usable source
+- ohlc LEO: no usable source
+- ohlc RAIN: no usable source
+- ohlc CC: no usable source
+- ohlc BTW: no usable source
