@@ -2,7 +2,8 @@ name: Daily market snapshot
 
 on:
   schedule:
-    - cron: "5 4 * * *"   # 04:05 UTC = 07:05 Kyiv; GitHub may start a few minutes late, the morning brief runs at 07:52
+    - cron: "5 4 * * *"    # 04:05 UTC = 07:05 Kyiv
+    - cron: "35 4 * * *"   # 04:35 UTC = 07:35 Kyiv — backup in case GitHub delays or drops the first run; the morning brief runs at 07:52
   workflow_dispatch: {}
 
 permissions:
