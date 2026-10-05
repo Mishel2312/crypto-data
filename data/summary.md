@@ -1,11 +1,11 @@
-# Market snapshot 2026-10-05T11:23:01Z
+# Market snapshot 2026-10-05T11:48:06Z
 
-Fear&Greed: 70 (Greed), 7d ago 74 · BTC dom 59.21% · mcap chg 24h -2.02%
-Funding (8h): BTC 0.0081%, ETH 0.0064%, SOL 0.01%
+Fear&Greed: 70 (Greed), 7d ago 74 · BTC dom 59.21% · mcap chg 24h -1.94%
+Funding (8h): BTC 0.0079%, ETH 0.0065%, SOL 0.01%
 
 | Macro | close | 1d | 5d | 20d | trend vs EMA50 |
 |---|---|---|---|---|---|
-| DXY | 102.253 | 0.32 | 1.04 | 3.12 | up |
+| DXY | 102.241 | 0.31 | 1.03 | 3.11 | up |
 | SPX | 7722.72 | 0.73 | -0.27 | -0.32 | up |
 | NDX | 27190.859 | 1.19 | 0.45 | 2.28 | up |
 | US10Y | 5.277 | 0.76 | 1.79 | 10.81 | up |
