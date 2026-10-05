@@ -1,11 +1,11 @@
-# Market snapshot 2026-10-05T10:41:46Z
+# Market snapshot 2026-10-05T11:23:01Z
 
-Fear&Greed: 70 (Greed), 7d ago 74 · BTC dom 59.24% · mcap chg 24h -2.03%
-Funding (8h): BTC 0.0084%, ETH 0.0056%, SOL 0.01%
+Fear&Greed: 70 (Greed), 7d ago 74 · BTC dom 59.21% · mcap chg 24h -2.02%
+Funding (8h): BTC 0.0081%, ETH 0.0064%, SOL 0.01%
 
 | Macro | close | 1d | 5d | 20d | trend vs EMA50 |
 |---|---|---|---|---|---|
-| DXY | 102.195 | 0.26 | 0.98 | 3.06 | up |
+| DXY | 102.253 | 0.32 | 1.04 | 3.12 | up |
 | SPX | 7722.72 | 0.73 | -0.27 | -0.32 | up |
 | NDX | 27190.859 | 1.19 | 0.45 | 2.28 | up |
 | US10Y | 5.277 | 0.76 | 1.79 | 10.81 | up |
@@ -34,8 +34,8 @@ Funding (8h): BTC 0.0084%, ETH 0.0056%, SOL 0.01%
 | 31 | GRAM | ok | 1.532 | 1.06 | -6.07 | 9.9 | bull_short | 56.2 | False | 1.18 | down | 14 |
 | 32 | QNT | ok | 252.57 | -1.7 | -11.77 | 296.69 | bull | 69.9 | False | 265.19 | up | 129 |
 | 33 | SHIB | meme | 5.91e-06 | 2.78 | -0.34 | 13.0 | above200 | 59.0 | False | 4.03 | down | 5 |
-| 34 | CRO | ok | 0.06888 | 3.58 | 2.94 | 23.26 | above200 | 60.7 | False | 13.48 | up | 2 |
-| 35 | TAO | ok | 304.5 | -0.85 | -4.78 | 35.45 | bull | 59.4 | False | 24.7 | up | 40 |
+| 34 | TAO | ok | 304.5 | -0.85 | -4.78 | 35.45 | bull | 59.4 | False | 24.7 | up | 40 |
+| 35 | CRO | ok | 0.06888 | 3.58 | 2.94 | 23.26 | above200 | 60.7 | False | 13.48 | up | 2 |
 | 36 | XAUT | pegged | 4144.49 | 0.06 | -2.74 | -6.37 | bear_short | 34.8 | False | -13.81 | down | 32 |
 | 39 | PUMP | meme | 0.006521 | 4.0 | 26.5 | 53.72 | bull | 70.3 | False | 41.52 | up | 57 |
 
