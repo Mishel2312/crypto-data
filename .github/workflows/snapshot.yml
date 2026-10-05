@@ -1,4 +1,4 @@
-name: Daily market snapshot
+name: Daily market snapshot (v2)
 
 on:
   schedule:
