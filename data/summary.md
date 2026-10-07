@@ -1,43 +1,43 @@
-# Market snapshot 2026-10-06T18:04:50Z
+# Market snapshot 2026-10-07T11:00:03Z
 
-Fear&Greed: 73 (Greed), 7d ago 73 · BTC dom 58.72% · mcap chg 24h -2.46%
-Funding (8h): BTC 0.004%, ETH 0.0079%, SOL 0.0015%
+Fear&Greed: 71 (Greed), 7d ago 71 · BTC dom 59.31% · mcap chg 24h -5.27%
+Funding (8h): BTC 0.0026%, ETH -0.0033%, SOL -0.0037%
 
 | Macro | close | 1d | 5d | 20d | trend vs EMA50 |
 |---|---|---|---|---|---|
-| DXY | 101.819 | -0.34 | 0.44 | 3.01 | up |
-| SPX | 7829.3 | 0.71 | 2.07 | 2.03 | up |
-| NDX | 27660.998 | 0.67 | 3.22 | 4.69 | up |
-| US10Y | 5.264 | -0.88 | 0.17 | 9.53 | up |
+| DXY | 102.297 | 0.46 | 0.83 | 3.57 | up |
+| SPX | 7818.93 | 0.58 | 1.93 | 1.89 | up |
+| NDX | 27599.789 | 0.45 | 2.99 | 4.46 | up |
+| US10Y | 5.269 | -0.79 | 0.27 | 9.63 | up |
 
 | # | Coin | kind | close | 1d% | 7d% | 30d% | EMA stack | RSI | bear div | vs BTC 30d% | vs BTC trend | vol7d $M |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | BTC | ok | 85766.87 | -0.88 | 2.71 | 7.43 | bull | 64.6 | False | None | None | 1289 |
-| 2 | ETH | ok | 2709.98 | -0.62 | 0.79 | 9.26 | bull | 61.5 | False | 1.7 | mixed | 665 |
-| 4 | BNB | ok | 786.43 | -1.13 | 2.94 | 2.6 | bull | 60.7 | False | -4.5 | mixed | 89 |
-| 5 | XRP | ok | 1.5077 | -0.85 | 0.73 | 6.75 | bull | 57.0 | False | -0.64 | mixed | 186 |
-| 7 | SOL | ok | 120.78 | -0.67 | 1.59 | 17.06 | bull | 64.1 | False | 8.96 | up | 247 |
-| 8 | TRX | ok | 0.3361 | 0.12 | 0.15 | 0.69 | above200 | 48.9 | False | -6.28 | down | 25 |
-| 10 | ZEC | ok | 1337.66 | -1.09 | -9.83 | 30.38 | above200 | 50.5 | True | 21.36 | mixed | 201 |
-| 11 | HYPE | ok | 94.17 | 4.07 | 7.64 | 10.27 | bull | 60.6 | False | 2.64 | up | 29 |
-| 12 | DOGE | meme | 0.09542 | -0.51 | 1.55 | 6.39 | above200 | 57.4 | False | -0.97 | down | 63 |
-| 14 | LINK | ok | 13.854 | -2.97 | -10.34 | 14.98 | bull | 56.0 | False | 7.02 | mixed | 42 |
-| 15 | ADA | ok | 0.2704 | 4.12 | 9.34 | 23.87 | above200 | 69.3 | False | 15.29 | up | 47 |
-| 19 | XLM | ok | 0.2155 | -3.84 | -7.31 | 17.18 | bull | 54.8 | False | 9.07 | mixed | 23 |
-| 20 | NEAR | ok | 5.294 | 7.67 | 9.77 | 141.51 | bull | 68.9 | False | 124.8 | up | 164 |
-| 21 | BCH | ok | 316.8 | -0.66 | 2.06 | 23.7 | above200 | 61.8 | False | 15.14 | up | 13 |
-| 22 | UNI | ok | 9.083 | 0.0 | 3.13 | 28.87 | bull | 61.9 | False | 19.96 | up | 55 |
-| 23 | LTC | ok | 70.1 | -0.85 | 1.24 | 28.18 | bull | 68.2 | False | 19.31 | up | 29 |
-| 25 | AVAX | ok | 11.129 | 0.23 | 4.83 | 46.57 | bull | 65.2 | False | 36.43 | up | 56 |
-| 27 | SUI | ok | 1.2138 | 0.46 | 3.95 | 52.66 | above200 | 67.7 | False | 42.1 | up | 100 |
-| 29 | HBAR | ok | 0.1017 | -2.22 | -16.67 | 26.78 | above200 | 57.9 | False | 18.0 | up | 31 |
-| 31 | GRAM | ok | 1.524 | -0.52 | -3.12 | 6.5 | bull_short | 55.4 | False | -0.87 | down | 10 |
-| 32 | QNT | ok | 262.8 | 4.05 | 13.91 | 304.87 | bull | 71.1 | False | 276.85 | up | 101 |
-| 33 | TAO | ok | 305.9 | 0.46 | -0.75 | 29.51 | bull | 59.8 | True | 20.55 | up | 37 |
-| 34 | SHIB | meme | 5.88e-06 | -0.51 | 3.52 | 7.69 | above200 | 58.0 | False | 0.24 | mixed | 5 |
-| 35 | XAUT | pegged | 4136.5 | -0.19 | 0.11 | -6.55 | bear_short | 34.1 | False | -13.02 | down | 23 |
-| 36 | CRO | ok | 0.06917 | 0.42 | -0.73 | 21.99 | above200 | 61.1 | False | 13.55 | up | 1 |
-| 38 | ENA | ok | 0.2494 | 3.31 | -2.81 | 45.08 | bull | 62.3 | False | 35.04 | up | 53 |
+| 1 | BTC | ok | 85549.93 | -0.25 | 2.25 | 6.48 | bull | 63.4 | False | None | None | 1283 |
+| 2 | ETH | ok | 2697.49 | -0.46 | 0.73 | 7.28 | bull | 59.7 | False | 0.75 | mixed | 633 |
+| 4 | BNB | ok | 779.5 | -0.88 | 2.75 | 3.52 | bull | 57.7 | False | -2.78 | down | 85 |
+| 5 | XRP | ok | 1.4971 | -0.7 | 0.44 | 5.17 | bull | 55.4 | False | -1.23 | mixed | 162 |
+| 7 | SOL | ok | 120.71 | -0.06 | 1.31 | 13.29 | bull | 63.9 | False | 6.39 | up | 231 |
+| 8 | TRX | ok | 0.3355 | -0.18 | 0.33 | 0.09 | above200 | 47.6 | False | -6.0 | down | 25 |
+| 10 | ZEC | ok | 1366.65 | 2.17 | -3.58 | 11.33 | above200 | 52.2 | True | 4.55 | mixed | 180 |
+| 11 | HYPE | ok | 91.95 | -2.36 | 6.86 | 4.58 | bull | 56.4 | False | -1.78 | up | 28 |
+| 12 | DOGE | meme | 0.09369 | -1.81 | -0.21 | 3.05 | above200 | 53.8 | False | -3.23 | down | 64 |
+| 15 | LINK | ok | 13.959 | 0.76 | -4.44 | 5.49 | bull | 56.9 | False | -0.94 | up | 32 |
+| 16 | ADA | ok | 0.2674 | -1.11 | 9.37 | 19.7 | above200 | 66.9 | True | 12.41 | up | 50 |
+| 19 | XLM | ok | 0.2121 | -1.58 | -4.59 | 13.0 | bull | 52.7 | False | 6.12 | mixed | 18 |
+| 20 | NEAR | ok | 5.066 | -4.31 | 3.68 | 107.71 | bull | 64.2 | False | 95.06 | up | 149 |
+| 21 | BCH | ok | 311.8 | -1.58 | 1.33 | 19.46 | below200 | 58.9 | False | 12.19 | up | 12 |
+| 22 | LTC | ok | 68.99 | -1.58 | 3.23 | 25.5 | bull | 64.2 | False | 17.86 | up | 27 |
+| 23 | UNI | ok | 8.562 | -5.74 | -3.68 | 17.37 | above200 | 53.7 | False | 10.22 | mixed | 52 |
+| 25 | AVAX | ok | 11.608 | 4.3 | 1.5 | 46.79 | bull | 69.0 | True | 37.85 | up | 49 |
+| 27 | SUI | ok | 1.1781 | -2.94 | 2.22 | 45.12 | above200 | 63.4 | False | 36.29 | up | 92 |
+| 30 | HBAR | ok | 0.09967 | -2.0 | -2.68 | 22.11 | above200 | 55.8 | False | 14.68 | up | 21 |
+| 31 | GRAM | ok | 1.524 | 0.0 | 2.9 | 6.35 | bull_short | 55.4 | False | -0.12 | down | 8 |
+| 34 | XAUT | pegged | 4167.61 | 0.75 | -0.42 | -5.66 | bear_short | 39.1 | False | -11.4 | down | 22 |
+| 35 | TAO | ok | 309.0 | 1.01 | 2.76 | 16.3 | bull | 60.9 | True | 9.22 | up | 33 |
+| 36 | SHIB | meme | 5.79e-06 | -1.53 | 0.52 | 4.7 | above200 | 54.9 | False | -1.67 | down | 5 |
+| 38 | CRO | ok | 0.06643 | -3.96 | -2.68 | 15.11 | above200 | 54.6 | True | 8.1 | mixed | 1 |
+| 39 | ENA | ok | 0.2403 | -3.65 | -3.26 | 36.38 | bull | 58.5 | False | 28.08 | up | 52 |
+| 40 | PUMP | meme | 0.006184 | -4.36 | 5.01 | 53.83 | bull | 64.8 | False | 44.47 | up | 40 |
 
 Errors:
 - ohlc FIGR_HELOC: no usable source
@@ -47,5 +47,7 @@ Errors:
 - ohlc LEO: no usable source
 - ohlc RAIN: no usable source
 - ohlc CC: no usable source
+- ohlc QNT binance: price 265.52 deviates 9% from CoinGecko 244.14
+- ohlc QNT coinbase: price 265.48 deviates 9% from CoinGecko 244.14
+- ohlc QNT: no usable source
 - ohlc BTW: no usable source
-- ohlc OKB: no usable source
