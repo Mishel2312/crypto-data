@@ -1,11 +1,11 @@
-# Market snapshot 2026-10-07T11:00:03Z
+# Market snapshot 2026-10-07T11:18:11Z
 
-Fear&Greed: 71 (Greed), 7d ago 71 · BTC dom 59.31% · mcap chg 24h -5.27%
-Funding (8h): BTC 0.0026%, ETH -0.0033%, SOL -0.0037%
+Fear&Greed: 71 (Greed), 7d ago 71 · BTC dom 59.31% · mcap chg 24h -5.45%
+Funding (8h): BTC 0.0023%, ETH -0.0029%, SOL -0.0048%
 
 | Macro | close | 1d | 5d | 20d | trend vs EMA50 |
 |---|---|---|---|---|---|
-| DXY | 102.297 | 0.46 | 0.83 | 3.57 | up |
+| DXY | 102.32 | 0.48 | 0.86 | 3.59 | up |
 | SPX | 7818.93 | 0.58 | 1.93 | 1.89 | up |
 | NDX | 27599.789 | 0.45 | 2.99 | 4.46 | up |
 | US10Y | 5.269 | -0.79 | 0.27 | 9.63 | up |
@@ -47,7 +47,7 @@ Errors:
 - ohlc LEO: no usable source
 - ohlc RAIN: no usable source
 - ohlc CC: no usable source
-- ohlc QNT binance: price 265.52 deviates 9% from CoinGecko 244.14
-- ohlc QNT coinbase: price 265.48 deviates 9% from CoinGecko 244.14
+- ohlc QNT binance: price 265.52 deviates 9% from CoinGecko 244.36
+- ohlc QNT coinbase: price 265.48 deviates 9% from CoinGecko 244.36
 - ohlc QNT: no usable source
 - ohlc BTW: no usable source
