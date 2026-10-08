@@ -1,11 +1,11 @@
-# Market snapshot 2026-10-08T06:15:33Z
+# Market snapshot 2026-10-08T07:30:43Z
 
-Fear&Greed: 64 (Greed), 7d ago 74 · BTC dom 58.75% · mcap chg 24h -4.42%
-Funding (8h): BTC 0.004%, ETH 0.0023%, SOL -0.0009%
+Fear&Greed: 64 (Greed), 7d ago 74 · BTC dom 58.77% · mcap chg 24h -3.32%
+Funding (8h): BTC 0.0012%, ETH 0.0019%, SOL -0.0013%
 
 | Macro | close | 1d | 5d | 20d | trend vs EMA50 |
 |---|---|---|---|---|---|
-| DXY | 102.332 | 0.09 | 0.23 | 3.27 | up |
+| DXY | 102.298 | 0.06 | 0.19 | 3.24 | up |
 | SPX | 7801.77 | -0.22 | 1.96 | 2.17 | up |
 | NDX | 27538.689 | -0.22 | 2.52 | 4.9 | up |
 | US10Y | 5.277 | 0.15 | -0.3 | 9.1 | up |
@@ -27,7 +27,7 @@ Funding (8h): BTC 0.004%, ETH 0.0023%, SOL -0.0009%
 | 20 | XLM | ok | 0.2005 | -5.47 | -11.4 | 3.51 | above200 | 46.2 | False | -1.72 | mixed | 16 |
 | 21 | BCH | ok | 300.3 | -3.69 | -1.93 | 15.95 | below200 | 52.7 | False | 10.09 | mixed | 12 |
 | 22 | LTC | ok | 66.11 | -4.17 | -1.7 | 19.74 | bull | 55.1 | False | 13.69 | up | 25 |
-| 24 | UNI | ok | 7.91 | -7.62 | -10.94 | 15.32 | above200 | 45.5 | False | 9.5 | mixed | 54 |
+| 23 | UNI | ok | 7.91 | -7.62 | -10.94 | 15.32 | above200 | 45.5 | False | 9.5 | mixed | 54 |
 | 25 | AVAX | ok | 11.13 | -4.12 | 1.76 | 37.78 | bull | 61.8 | True | 30.82 | up | 50 |
 | 26 | SUI | ok | 1.1283 | -4.23 | -3.09 | 37.85 | above200 | 57.9 | False | 30.88 | up | 85 |
 | 30 | HBAR | ok | 0.09285 | -6.84 | -11.37 | 13.41 | above200 | 49.3 | False | 7.68 | mixed | 16 |
