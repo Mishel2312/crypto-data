@@ -1,76 +1,50 @@
-# Market snapshot 2026-10-08T17:44:28Z
+# Market snapshot 2026-10-09T04:53:46Z
 
-Fear&Greed: 64 (Greed), 7d ago 74 · BTC dom 59.2% · mcap chg 24h -6.4%
-Funding (8h): BTC 0.0053%, ETH 0.0025%, SOL -0.0023%
+Fear&Greed: 59 (Greed), 7d ago 72 · BTC dom 59.09% · mcap chg 24h -4.06%
+Funding (8h): BTC 0.0056%, ETH -0.0074%, SOL -0.0004%
 
 | Macro | close | 1d | 5d | 20d | trend vs EMA50 |
 |---|---|---|---|---|---|
-| DXY | 102.08 | -0.16 | -0.02 | 3.02 | up |
-| SPX | 7751.04 | -0.65 | 1.1 | 2.1 | up |
-| NDX | 27138.221 | -1.45 | 0.99 | 4.05 | up |
-| US10Y | 5.235 | -0.8 | -0.04 | 5.89 | up |
+| DXY | 102.032 | -0.11 | 0.1 | 2.94 | up |
+| SPX | 7765.36 | -0.47 | 1.29 | 2.29 | up |
+| NDX | 27193.34 | -1.25 | 1.2 | 4.26 | up |
+| US10Y | 5.231 | -0.87 | -0.11 | 5.81 | up |
 
 | # | Coin | kind | close | 1d% | 7d% | 30d% | EMA stack | RSI | bear div | vs BTC 30d% | vs BTC trend | vol7d $M |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | BTC | ok | 83321.81 | -2.6 | -0.36 | 5.32 | above200 | 52.9 | False | None | None | 1309 |
-| 2 | ETH | ok | 2574.14 | -4.57 | -4.16 | 3.37 | above200 | 45.3 | False | -1.85 | mixed | 690 |
-| 4 | BNB | ok | 772.45 | -0.9 | 0.41 | 4.39 | bull | 54.7 | False | -0.89 | up | 86 |
-| 5 | XRP | ok | 1.4215 | -5.05 | -4.6 | 1.78 | above200 | 45.5 | False | -3.37 | mixed | 163 |
-| 8 | TRX | ok | 0.3354 | -0.03 | -0.59 | 0.24 | above200 | 47.4 | False | -4.83 | down | 25 |
-| 11 | HYPE | ok | 88.46 | -3.8 | -2.78 | 3.94 | above200 | 50.5 | False | -1.32 | mixed | 27 |
-| 19 | XLM | ok | 0.2005 | -5.47 | -11.4 | 3.51 | above200 | 46.2 | False | -1.72 | mixed | 16 |
-| 23 | LTC | ok | 66.11 | -4.17 | -1.7 | 19.74 | bull | 55.1 | False | 13.69 | up | 25 |
-| 30 | HBAR | ok | 0.09285 | -6.84 | -11.37 | 13.41 | above200 | 49.3 | False | 7.68 | mixed | 16 |
-| 31 | GRAM | ok | 1.443 | -5.31 | -3.8 | 3.74 | mixed | 47.2 | False | -1.5 | down | 8 |
-| 33 | XAUT | pegged | 4111.12 | -1.36 | -1.15 | -6.99 | bear_short | 34.1 | False | -11.69 | down | 25 |
-| 36 | SHIB | meme | 5.43e-06 | -6.22 | -5.73 | 0.0 | below200 | 44.6 | False | -5.05 | down | 5 |
-| 38 | CRO | ok | 0.06315 | -4.94 | -5.68 | 10.79 | below200 | 48.1 | True | 5.19 | mixed | 1 |
+| 1 | BTC | ok | 81754.45 | -1.88 | -3.68 | 4.2 | above200 | 47.0 | False | None | None | 1362 |
+| 2 | ETH | ok | 2474.8 | -3.86 | -8.56 | -0.41 | above200 | 37.5 | False | -4.43 | mixed | 739 |
+| 4 | BNB | ok | 736.08 | -4.71 | -4.62 | -2.12 | above200 | 42.6 | False | -6.07 | down | 96 |
+| 5 | XRP | ok | 1.3805 | -2.88 | -7.59 | -2.58 | below200 | 41.2 | False | -6.51 | mixed | 175 |
+| 7 | SOL | ok | 109.62 | -5.74 | -7.42 | 6.05 | above200 | 43.3 | False | 1.77 | mixed | 234 |
+| 8 | TRX | ok | 0.3328 | -0.78 | -0.6 | -1.77 | above200 | 41.9 | False | -5.73 | mixed | 24 |
+| 10 | ZEC | ok | 1187.02 | -10.61 | -11.12 | 0.78 | above200 | 42.0 | True | -3.29 | mixed | 182 |
+| 11 | HYPE | ok | 84.16 | -4.86 | -3.93 | -1.2 | above200 | 44.4 | False | -5.18 | mixed | 27 |
+| 12 | DOGE | meme | 0.08404 | -5.62 | -10.95 | -6.67 | below200 | 38.8 | False | -10.44 | down | 78 |
+| 15 | LINK | ok | 12.707 | -4.65 | -11.67 | 1.51 | above200 | 45.5 | False | -2.59 | mixed | 28 |
+| 16 | ADA | ok | 0.2322 | -9.12 | -5.76 | 5.79 | below200 | 46.2 | True | 1.52 | mixed | 58 |
+| 19 | XLM | ok | 0.1921 | -4.19 | -12.32 | 2.34 | below200 | 42.1 | False | -1.79 | mixed | 16 |
+| 20 | NEAR | ok | 4.464 | -16.33 | -7.17 | 92.41 | above200 | 52.4 | False | 84.65 | up | 152 |
+| 21 | BCH | ok | 271.1 | -9.72 | -12.35 | 4.96 | below200 | 40.9 | False | 0.72 | mixed | 13 |
+| 22 | LTC | ok | 63.16 | -4.46 | -7.28 | 16.32 | above200 | 47.6 | False | 11.62 | mixed | 27 |
+| 25 | UNI | ok | 7.12 | -9.99 | -20.74 | 5.4 | above200 | 38.0 | False | 1.15 | mixed | 58 |
+| 27 | AVAX | ok | 10.076 | -9.47 | -8.32 | 25.82 | above200 | 49.5 | True | 20.75 | mixed | 52 |
+| 28 | SUI | ok | 1.0408 | -7.76 | -11.59 | 28.29 | above200 | 49.7 | False | 23.11 | mixed | 89 |
+| 30 | HBAR | ok | 0.09034 | -2.7 | -11.99 | 14.27 | above200 | 47.1 | False | 9.66 | mixed | 15 |
+| 32 | GRAM | ok | 1.38 | -4.37 | -12.38 | -1.57 | mixed | 42.0 | False | -5.54 | down | 8 |
+| 33 | QNT | ok | 236.73 | -6.58 | -3.56 | 253.22 | bull | 62.8 | False | 238.97 | up | 52 |
+| 34 | XAUT | pegged | 4141.35 | 0.74 | -1.01 | -4.8 | bear_short | 38.7 | False | -8.64 | mixed | 27 |
+| 36 | SHIB | meme | 5.3e-06 | -2.39 | -8.46 | -2.03 | below200 | 41.5 | False | -5.99 | down | 5 |
+| 37 | TAO | ok | 268.6 | -7.82 | -11.47 | 3.91 | above200 | 44.2 | True | -0.29 | mixed | 37 |
+| 38 | CRO | ok | 0.0603 | -4.51 | -12.24 | 1.98 | below200 | 43.2 | True | -2.14 | mixed | 1 |
+| 40 | ENA | ok | 0.2066 | -8.75 | -15.05 | 29.77 | above200 | 46.6 | False | 24.54 | mixed | 44 |
 
 Errors:
-- ohlc SOL binance: price 116.3 deviates 9% from CoinGecko 106.67
-- ohlc SOL coinbase: price 116.25 deviates 9% from CoinGecko 106.67
-- ohlc SOL: no usable source
 - ohlc FIGR_HELOC: no usable source
-- ohlc ZEC binance: price 1327.98 deviates 17% from CoinGecko 1136.83
-- ohlc ZEC coinbase: price 1326.42 deviates 17% from CoinGecko 1136.83
-- ohlc ZEC: no usable source
 - ohlc HYPE binance: too short
-- ohlc DOGE binance: price 0.08904 deviates 9% from CoinGecko 0.081814
-- ohlc DOGE coinbase: price 0.08899 deviates 9% from CoinGecko 0.081814
-- ohlc DOGE: no usable source
 - ohlc XMR binance: stale, last candle 2024-02-20
 - ohlc XMR: no usable source
-- ohlc LINK binance: price 13.326 deviates 9% from CoinGecko 12.21
-- ohlc LINK coinbase: price 13.319 deviates 9% from CoinGecko 12.21
-- ohlc LINK: no usable source
-- ohlc ADA binance: price 0.2555 deviates 13% from CoinGecko 0.226121
-- ohlc ADA coinbase: price 0.25531 deviates 13% from CoinGecko 0.226121
-- ohlc ADA: no usable source
 - ohlc LEO: no usable source
 - ohlc RAIN: no usable source
-- ohlc NEAR binance: price 5.335 deviates 18% from CoinGecko 4.54
-- ohlc NEAR coinbase: price 5.3314 deviates 17% from CoinGecko 4.54
-- ohlc NEAR: no usable source
-- ohlc BCH binance: price 300.3 deviates 9% from CoinGecko 275.42
-- ohlc BCH coinbase: price 300.09 deviates 9% from CoinGecko 275.42
-- ohlc BCH: no usable source
 - ohlc CC: no usable source
-- ohlc UNI binance: price 7.91 deviates 11% from CoinGecko 7.12
-- ohlc UNI coinbase: price 7.9107 deviates 11% from CoinGecko 7.12
-- ohlc UNI: no usable source
-- ohlc AVAX binance: price 11.13 deviates 13% from CoinGecko 9.87
-- ohlc AVAX coinbase: price 11.125 deviates 13% from CoinGecko 9.87
-- ohlc AVAX: no usable source
-- ohlc SUI binance: price 1.1283 deviates 12% from CoinGecko 1.011
-- ohlc SUI coinbase: price 1.1273 deviates 12% from CoinGecko 1.011
-- ohlc SUI: no usable source
 - ohlc BTW: no usable source
-- ohlc QNT binance: price 253.4 deviates 13% from CoinGecko 224.78
-- ohlc QNT coinbase: price 253.13 deviates 13% from CoinGecko 224.78
-- ohlc QNT: no usable source
-- ohlc TAO binance: price 291.4 deviates 13% from CoinGecko 258.48
-- ohlc TAO coinbase: price 291.24 deviates 13% from CoinGecko 258.48
-- ohlc TAO: no usable source
-- ohlc ENA binance: price 0.2264 deviates 13% from CoinGecko 0.200003
-- ohlc ENA coinbase: price 0.22638 deviates 13% from CoinGecko 0.200003
-- ohlc ENA: no usable source
