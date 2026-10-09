@@ -1,11 +1,11 @@
-# Market snapshot 2026-10-09T07:28:49Z
+# Market snapshot 2026-10-09T09:15:57Z
 
-Fear&Greed: 59 (Greed), 7d ago 72 · BTC dom 59.07% · mcap chg 24h -3.67%
-Funding (8h): BTC 0.0031%, ETH -0.0081%, SOL -0.0036%
+Fear&Greed: 59 (Greed), 7d ago 72 · BTC dom 59.58% · mcap chg 24h -3.64%
+Funding (8h): BTC -0.0017%, ETH -0.0094%, SOL -0.0069%
 
 | Macro | close | 1d | 5d | 20d | trend vs EMA50 |
 |---|---|---|---|---|---|
-| DXY | 102.02 | -0.12 | 0.09 | 2.93 | up |
+| DXY | 102.087 | -0.05 | 0.15 | 2.99 | up |
 | SPX | 7765.36 | -0.47 | 1.29 | 2.29 | up |
 | NDX | 27193.34 | -1.25 | 1.2 | 4.26 | up |
 | US10Y | 5.231 | -0.87 | -0.11 | 5.81 | up |
@@ -24,6 +24,7 @@ Funding (8h): BTC 0.0031%, ETH -0.0081%, SOL -0.0036%
 | 15 | LINK | ok | 12.707 | -4.65 | -11.67 | 1.51 | above200 | 45.5 | False | -2.59 | mixed | 28 |
 | 16 | ADA | ok | 0.2322 | -9.12 | -5.76 | 5.79 | below200 | 46.2 | True | 1.52 | mixed | 58 |
 | 19 | XLM | ok | 0.1921 | -4.19 | -12.32 | 2.34 | below200 | 42.1 | False | -1.79 | mixed | 16 |
+| 20 | NEAR | ok | 4.464 | -16.33 | -7.17 | 92.41 | above200 | 52.4 | False | 84.65 | up | 152 |
 | 21 | BCH | ok | 271.1 | -9.72 | -12.35 | 4.96 | below200 | 40.9 | False | 0.72 | mixed | 13 |
 | 22 | LTC | ok | 63.16 | -4.46 | -7.28 | 16.32 | above200 | 47.6 | False | 11.62 | mixed | 27 |
 | 25 | UNI | ok | 7.12 | -9.99 | -20.74 | 5.4 | above200 | 38.0 | False | 1.15 | mixed | 58 |
@@ -36,7 +37,7 @@ Funding (8h): BTC 0.0031%, ETH -0.0081%, SOL -0.0036%
 | 35 | SHIB | meme | 5.3e-06 | -2.39 | -8.46 | -2.03 | below200 | 41.5 | False | -5.99 | down | 5 |
 | 37 | TAO | ok | 268.6 | -7.82 | -11.47 | 3.91 | above200 | 44.2 | True | -0.29 | mixed | 37 |
 | 38 | CRO | ok | 0.0603 | -4.51 | -12.24 | 1.98 | below200 | 43.2 | True | -2.14 | mixed | 1 |
-| 40 | ENA | ok | 0.2066 | -8.75 | -15.05 | 29.77 | above200 | 46.6 | False | 24.54 | mixed | 44 |
+| 39 | ENA | ok | 0.2066 | -8.75 | -15.05 | 29.77 | above200 | 46.6 | False | 24.54 | mixed | 44 |
 
 Errors:
 - ohlc FIGR_HELOC: no usable source
@@ -45,8 +46,5 @@ Errors:
 - ohlc XMR: no usable source
 - ohlc LEO: no usable source
 - ohlc RAIN: no usable source
-- ohlc NEAR binance: price 4.464 deviates 8% from CoinGecko 4.86
-- ohlc NEAR coinbase: price 4.4614 deviates 8% from CoinGecko 4.86
-- ohlc NEAR: no usable source
 - ohlc CC: no usable source
 - ohlc BTW: no usable source
