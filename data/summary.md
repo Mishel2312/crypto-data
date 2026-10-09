@@ -1,11 +1,11 @@
-# Market snapshot 2026-10-09T09:15:57Z
+# Market snapshot 2026-10-09T10:52:31Z
 
-Fear&Greed: 59 (Greed), 7d ago 72 · BTC dom 59.58% · mcap chg 24h -3.64%
-Funding (8h): BTC -0.0017%, ETH -0.0094%, SOL -0.0069%
+Fear&Greed: 59 (Greed), 7d ago 72 · BTC dom 59.66% · mcap chg 24h -4.18%
+Funding (8h): BTC -0.0031%, ETH -0.0083%, SOL -0.005%
 
 | Macro | close | 1d | 5d | 20d | trend vs EMA50 |
 |---|---|---|---|---|---|
-| DXY | 102.087 | -0.05 | 0.15 | 2.99 | up |
+| DXY | 102.156 | 0.02 | 0.22 | 3.06 | up |
 | SPX | 7765.36 | -0.47 | 1.29 | 2.29 | up |
 | NDX | 27193.34 | -1.25 | 1.2 | 4.26 | up |
 | US10Y | 5.231 | -0.87 | -0.11 | 5.81 | up |
@@ -30,14 +30,14 @@ Funding (8h): BTC -0.0017%, ETH -0.0094%, SOL -0.0069%
 | 25 | UNI | ok | 7.12 | -9.99 | -20.74 | 5.4 | above200 | 38.0 | False | 1.15 | mixed | 58 |
 | 26 | AVAX | ok | 10.076 | -9.47 | -8.32 | 25.82 | above200 | 49.5 | True | 20.75 | mixed | 52 |
 | 28 | SUI | ok | 1.0408 | -7.76 | -11.59 | 28.29 | above200 | 49.7 | False | 23.11 | mixed | 89 |
-| 30 | HBAR | ok | 0.09034 | -2.7 | -11.99 | 14.27 | above200 | 47.1 | False | 9.66 | mixed | 15 |
-| 32 | GRAM | ok | 1.38 | -4.37 | -12.38 | -1.57 | mixed | 42.0 | False | -5.54 | down | 8 |
+| 30 | GRAM | ok | 1.38 | -4.37 | -12.38 | -1.57 | mixed | 42.0 | False | -5.54 | down | 8 |
+| 32 | HBAR | ok | 0.09034 | -2.7 | -11.99 | 14.27 | above200 | 47.1 | False | 9.66 | mixed | 15 |
 | 33 | QNT | ok | 236.73 | -6.58 | -3.56 | 253.22 | bull | 62.8 | False | 238.97 | up | 52 |
 | 34 | XAUT | pegged | 4141.35 | 0.74 | -1.01 | -4.8 | bear_short | 38.7 | False | -8.64 | mixed | 27 |
-| 35 | SHIB | meme | 5.3e-06 | -2.39 | -8.46 | -2.03 | below200 | 41.5 | False | -5.99 | down | 5 |
+| 36 | SHIB | meme | 5.3e-06 | -2.39 | -8.46 | -2.03 | below200 | 41.5 | False | -5.99 | down | 5 |
 | 37 | TAO | ok | 268.6 | -7.82 | -11.47 | 3.91 | above200 | 44.2 | True | -0.29 | mixed | 37 |
 | 38 | CRO | ok | 0.0603 | -4.51 | -12.24 | 1.98 | below200 | 43.2 | True | -2.14 | mixed | 1 |
-| 39 | ENA | ok | 0.2066 | -8.75 | -15.05 | 29.77 | above200 | 46.6 | False | 24.54 | mixed | 44 |
+| 40 | ENA | ok | 0.2066 | -8.75 | -15.05 | 29.77 | above200 | 46.6 | False | 24.54 | mixed | 44 |
 
 Errors:
 - ohlc FIGR_HELOC: no usable source
