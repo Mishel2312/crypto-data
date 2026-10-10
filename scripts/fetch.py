@@ -248,7 +248,7 @@ def coinbase_daily(sym: str) -> pd.DataFrame | None:
 
 
 MAX_STALE_DAYS = 3      # a delisted pair keeps returning old candles; reject them
-MAX_PRICE_DEV_PCT = 8   # last close vs CoinGecko spot; daily close vs live price legitimately differs a few %
+MAX_PRICE_DEV_PCT = 20  # last closed-day close vs CoinGecko live price; 10%+ intraday moves are normal for alts, stale/delisted pairs are caught by MAX_STALE_DAYS
 
 
 def series_problem(df: pd.DataFrame | None, ref_price: float | None) -> str | None:
