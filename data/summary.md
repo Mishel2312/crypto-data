@@ -1,7 +1,7 @@
-# Market snapshot 2026-10-10T06:00:36Z
+# Market snapshot 2026-10-10T07:16:06Z
 
-Fear&Greed: 64 (Greed), 7d ago 67 · BTC dom 59.08% · mcap chg 24h -2.13%
-Funding (8h): BTC 0.0051%, ETH 0.0004%, SOL 0.0043%
+Fear&Greed: 64 (Greed), 7d ago 67 · BTC dom 59.08% · mcap chg 24h -2.67%
+Funding (8h): BTC 0.0045%, ETH 0.0009%, SOL 0.0029%
 
 | Macro | close | 1d | 5d | 20d | trend vs EMA50 |
 |---|---|---|---|---|---|
