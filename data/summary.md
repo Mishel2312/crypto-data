@@ -1,7 +1,7 @@
-# Market snapshot 2026-10-10T07:16:06Z
+# Market snapshot 2026-10-10T08:39:19Z
 
-Fear&Greed: 64 (Greed), 7d ago 67 · BTC dom 59.08% · mcap chg 24h -2.67%
-Funding (8h): BTC 0.0045%, ETH 0.0009%, SOL 0.0029%
+Fear&Greed: 64 (Greed), 7d ago 67 · BTC dom 59.11% · mcap chg 24h -1.79%
+Funding (8h): BTC 0.0038%, ETH 0.0017%, SOL 0.0019%
 
 | Macro | close | 1d | 5d | 20d | trend vs EMA50 |
 |---|---|---|---|---|---|
@@ -21,7 +21,7 @@ Funding (8h): BTC 0.0045%, ETH 0.0009%, SOL 0.0029%
 | 10 | ZEC | ok | 1205.86 | 1.59 | -7.35 | -3.09 | above200 | 43.3 | True | -8.16 | mixed | 171 |
 | 11 | HYPE | ok | 84.14 | -0.02 | -5.59 | 0.69 | above200 | 44.3 | False | -4.58 | mixed | 24 |
 | 12 | DOGE | meme | 0.08539 | 1.61 | -8.11 | -0.89 | below200 | 41.3 | False | -6.09 | down | 69 |
-| 14 | LINK | ok | 12.811 | 0.82 | -7.13 | 8.53 | above200 | 46.5 | False | 2.85 | mixed | 22 |
+| 15 | LINK | ok | 12.811 | 0.82 | -7.13 | 8.53 | above200 | 46.5 | False | 2.85 | mixed | 22 |
 | 16 | ADA | ok | 0.2431 | 4.69 | -0.53 | 14.72 | above200 | 51.3 | True | 8.71 | up | 53 |
 | 19 | XLM | ok | 0.1948 | 1.41 | -9.61 | 7.51 | above200 | 43.9 | False | 1.87 | down | 14 |
 | 20 | NEAR | ok | 4.885 | 9.43 | 4.11 | 96.58 | bull | 57.2 | False | 86.28 | up | 148 |
@@ -29,7 +29,7 @@ Funding (8h): BTC 0.0045%, ETH 0.0009%, SOL 0.0029%
 | 22 | LTC | ok | 63.47 | 0.49 | -9.19 | 19.3 | above200 | 48.4 | False | 13.05 | mixed | 23 |
 | 25 | AVAX | ok | 10.335 | 2.57 | -4.31 | 32.53 | above200 | 52.0 | True | 25.59 | mixed | 46 |
 | 26 | UNI | ok | 7.322 | 2.84 | -18.22 | 18.92 | above200 | 40.7 | False | 12.69 | mixed | 57 |
-| 28 | SUI | ok | 1.0698 | 2.79 | -6.66 | 38.54 | above200 | 52.1 | False | 31.28 | mixed | 81 |
+| 27 | SUI | ok | 1.0698 | 2.79 | -6.66 | 38.54 | above200 | 52.1 | False | 31.28 | mixed | 81 |
 | 31 | GRAM | ok | 1.455 | 5.43 | -2.94 | 5.97 | mixed | 49.2 | False | 0.42 | down | 9 |
 | 32 | HBAR | ok | 0.09226 | 2.13 | -9.9 | 20.51 | above200 | 49.0 | False | 14.19 | mixed | 14 |
 | 33 | QNT | ok | 248.28 | 4.88 | 0.45 | 269.74 | bull | 64.7 | False | 250.37 | up | 44 |
