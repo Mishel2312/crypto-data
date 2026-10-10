@@ -48,6 +48,15 @@ SERIES = {s: candles(p) for s, p in {"BTC": 85000, "ETH": 2700, "SOL": 120, "DOG
 LAST = {s: k[-2][4] for s, k in SERIES.items()}  # last closed candle (the final one is still open)
 
 def fake_get(url, params=None, tries=3):
+    if "coins/markets" in url and (params or {}).get("category") == "meme-token":
+        return [{"symbol": "doge"}]
+    if "coins/markets" in url and (params or {}).get("category"):
+        return [{"symbol": "usdt"}]
+    if "whitebit.com/api/v4/public/markets" in url:
+        return [{"name": f"{s}_USDT", "stock": s, "money": "USDT", "type": "spot", "tradesEnabled": True}
+                for s in ("BTC", "ETH", "SOL", "DOGE")] + [{"name": "SOL_EUR", "stock": "SOL", "money": "EUR"}]
+    if "whitebit.com/api/v4/public/ticker" in url:
+        return {f"{s}_USDT": {"quote_volume": "500000", "last_price": "1", "isFrozen": False} for s in ("BTC", "ETH", "SOL", "DOGE")}
     if "coins/markets" in url:
         return [{"symbol": s, "id": s.lower(), "name": s, "current_price": p, "market_cap_rank": i + 1, "market_cap": 1e9,
                  "total_volume": 1e8} for i, (s, p) in enumerate([("BTC", LAST["BTC"]), ("ETH", LAST["ETH"]), ("USDT", 1.0),
@@ -71,6 +80,16 @@ snap = json.load(open(os.path.join(tmp, "indicators.json")))
 syms = [c["symbol"] for c in snap["coins"]]
 assert syms == ["BTC", "ETH", "SOL", "DOGE"], syms              # stable + wrapped dropped, meme kept but flagged
 assert snap["coins"][3]["kind"] == "meme"
+el = {c["symbol"]: c["eligible"] for c in snap["coins"]}
+assert el == {"BTC": False, "ETH": False, "SOL": True, "DOGE": False}, el   # benchmarks and memes are never buyable
+assert snap["whitebit_ok"] and snap["eligible_count"] == 1
+
+# 6. WhiteBIT kline parsing (fallback candle source)
+t0 = int(time.time() // 86400 - 40) * 86400
+rows = [[t0 + i * 86400, "10", "11", "12", "9", "5", "55"] for i in range(41)]
+fetch.get = lambda url, params=None, tries=3: {"success": True, "result": rows}
+wdf = fetch.whitebit_daily("SOL", "SOL_USDT")
+assert len(wdf) == 40 and wdf["close"].iloc[-1] == 11 and wdf["high"].iloc[-1] == 12 and wdf["low"].iloc[-1] == 9, wdf.tail(2)
 eth = snap["coins"][1]
 for k in ("ema200", "rsi14", "vs_btc_trend", "chg_30d", "atr14_pct"):
     assert eth[k] is not None, k

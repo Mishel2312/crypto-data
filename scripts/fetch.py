@@ -21,7 +21,11 @@ import requests
 
 ROOT = os.path.join(os.path.dirname(__file__), "..", "data")
 UA = {"User-Agent": "crypto-data-snapshot/1.0"}
-TOP_N = 40  # fetch a bit more than top-30 so held coins that slip a few ranks stay covered
+TOP_N = 250            # CoinGecko ranks fetched; held coins that slip below the buy cut still get data
+ELIGIBLE_RANK = 150    # buy universe: market-cap rank (CoinGecko, wrapped tokens skipped) up to this
+MIN_GLOBAL_VOL = 20e6  # USD, 24h aggregated volume (CoinGecko)
+MIN_WB_VOL = 100e3     # USD, 24h volume on WhiteBIT itself, so its price is a real market price
+ALWAYS = ("BTC", "ETH")  # benchmarks: always collected, never eligible
 
 STABLES = {"USDT", "USDC", "DAI", "FDUSD", "TUSD", "USDE", "USDS", "USD1", "PYUSD", "USDD",
            "BUSD", "FRAX", "GHO", "RLUSD", "USDTB", "USDF", "SUSDE", "EUSDE", "USDG", "BFUSD", "USYC"}
@@ -140,13 +144,22 @@ def coin_indicators(df: pd.DataFrame, btc: pd.DataFrame | None) -> dict:
 
 def universe():
     data = get("https://api.coingecko.com/api/v3/coins/markets",
-               {"vs_currency": "usd", "order": "market_cap_desc", "per_page": 80, "page": 1,
+               {"vs_currency": "usd", "order": "market_cap_desc", "per_page": TOP_N, "page": 1,
                 "price_change_percentage": "24h,7d,30d"})
+    memes, stables = set(MEMES), set(STABLES)
+    for cat, bucket in (("meme-token", memes), ("stablecoins", stables)):
+        try:
+            time.sleep(3)
+            for d in get("https://api.coingecko.com/api/v3/coins/markets",
+                         {"vs_currency": "usd", "category": cat, "order": "market_cap_desc", "per_page": 250, "page": 1}):
+                bucket.add(d["symbol"].upper())
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"category {cat}: {e}")
     rows = []
     for d in data:
         sym = d["symbol"].upper()
-        kind = ("stable" if sym in STABLES or (d.get("current_price") and abs(d["current_price"] - 1) < 0.02 and sym.startswith("USD"))
-                else "pegged" if sym in PEGGED else "meme" if sym in MEMES else "wrapped" if sym in WRAPPED else "ok")
+        kind = ("stable" if sym in stables or (d.get("current_price") and abs(d["current_price"] - 1) < 0.02 and sym.startswith("USD"))
+                else "pegged" if sym in PEGGED else "wrapped" if sym in WRAPPED else "meme" if sym in memes else "ok")
         rows.append({"rank": d.get("market_cap_rank"), "symbol": sym, "id": d["id"], "name": d["name"], "kind": kind,
                      "price": d.get("current_price"), "market_cap": d.get("market_cap"), "volume_24h": d.get("total_volume"),
                      "chg_24h": r(d.get("price_change_percentage_24h_in_currency"), 2),
@@ -154,9 +167,56 @@ def universe():
                      "chg_30d": r(d.get("price_change_percentage_30d_in_currency"), 2)})
     # rank among real assets (wrapped tokens duplicate their base asset)
     rows = [x for x in rows if x["kind"] != "wrapped"]
-    for i, x in enumerate(rows, 1):
+    seen, out = set(), []
+    for x in rows:  # duplicate tickers: keep the larger project
+        if x["symbol"] not in seen:
+            seen.add(x["symbol"])
+            out.append(x)
+    for i, x in enumerate(out, 1):
         x["rank_clean"] = i
-    return rows[:TOP_N]
+    return out
+
+
+def whitebit():
+    """{SYMBOL: {market, volume_24h_usd, last}} for spot X_USDT pairs open for trading on WhiteBIT."""
+    markets = get("https://whitebit.com/api/v4/public/markets")
+    ticker = get("https://whitebit.com/api/v4/public/ticker")
+    out = {}
+    for m in markets:
+        if m.get("money") != "USDT" or m.get("type", "spot") != "spot" or m.get("tradesEnabled") is False:
+            continue
+        name = m.get("name") or f"{m['stock']}_USDT"
+        t = ticker.get(name, {})
+        try:
+            qv = float(t.get("quote_volume") or 0)
+            last = float(t.get("last_price") or 0) or None
+        except (TypeError, ValueError):
+            qv, last = 0.0, None
+        out[m["stock"].upper()] = {"market": name, "volume_24h_usd": round(qv), "last": last,
+                                   "frozen": bool(t.get("isFrozen", False))}
+    if not out:
+        raise RuntimeError("no USDT spot markets parsed")
+    return out
+
+
+def whitebit_daily(sym: str, market: str | None = None) -> pd.DataFrame | None:
+    try:
+        res = get("https://whitebit.com/api/v1/public/kline",
+                  {"market": market or f"{sym}_USDT", "interval": "1d", "limit": 400})
+        k = res.get("result") if isinstance(res, dict) else res
+    except Exception:  # noqa: BLE001
+        return None
+    if not k:
+        return None
+    # documented order: time, open, close, high, low, volume(stock), volume(money)
+    df = pd.DataFrame([row[:7] for row in k], columns=["t", "open", "close", "high", "low", "volume", "quote_volume"])
+    df[["open", "close", "high", "low", "volume", "quote_volume"]] = df[["open", "close", "high", "low", "volume", "quote_volume"]].astype(float)
+    hl = df[["open", "close", "high", "low"]]
+    df["high"], df["low"] = hl.max(axis=1), hl.min(axis=1)  # guard against a field-order surprise
+    df.index = pd.to_datetime(df["t"].astype(float), unit="s").dt.normalize()
+    df = df.sort_index()
+    df = df[df.index < pd.Timestamp.utcnow().tz_localize(None).normalize()]
+    return df[["open", "high", "low", "close", "volume", "quote_volume"]]
 
 
 def binance_daily(sym: str) -> pd.DataFrame | None:
@@ -269,15 +329,38 @@ def main():
         errors.append(f"universe: {e}")
         uni = [{"symbol": s, "kind": "ok", "rank_clean": i} for i, s in enumerate(
             ["BTC", "ETH", "BNB", "XRP", "SOL", "TRX", "ADA", "LINK", "AVAX", "SUI", "XLM", "BCH", "LTC", "DOT", "NEAR", "UNI"], 1)]
-    json.dump({"generated_at": gen, "coins": uni}, open(os.path.join(ROOT, "universe.json"), "w"), indent=1)
-
-    frames: dict[str, pd.DataFrame] = {}
+    try:
+        wb = whitebit()
+    except Exception as e:  # noqa: BLE001
+        errors.append(f"whitebit: {e} — universe falls back to CoinGecko rank only")
+        wb = None
     for x in uni:
-        if x["kind"] == "stable":
-            continue
+        w = (wb or {}).get(x["symbol"])
+        x["on_whitebit"] = None if wb is None else bool(w and not w["frozen"])
+        x["whitebit_volume_24h"] = w["volume_24h_usd"] if w else None
+        x["whitebit_market"] = w["market"] if w else None
+        why = []
+        if x["symbol"] in ALWAYS: why.append("benchmark")
+        if x["kind"] != "ok": why.append(x["kind"])
+        if (x.get("rank_clean") or 999) > ELIGIBLE_RANK: why.append(f"rank>{ELIGIBLE_RANK}")
+        if (x.get("volume_24h") or 0) < MIN_GLOBAL_VOL: why.append("global volume<$20M")
+        if wb is not None and not x["on_whitebit"]: why.append("not on WhiteBIT")
+        elif wb is not None and (x["whitebit_volume_24h"] or 0) < MIN_WB_VOL: why.append("WhiteBIT volume<$100k")
+        x["eligible"] = not why
+        x["not_eligible_because"] = why
+    json.dump({"generated_at": gen, "whitebit_ok": wb is not None, "coins": uni},
+              open(os.path.join(ROOT, "universe.json"), "w"), indent=1)
+
+    # candles for everything tradable on WhiteBIT within TOP_N (so held coins keep data even if they lose eligibility)
+    collect = [x for x in uni if x["kind"] != "stable" and
+               (x["symbol"] in ALWAYS or x["on_whitebit"] or (wb is None and (x.get("rank_clean") or 999) <= ELIGIBLE_RANK))]
+    frames: dict[str, pd.DataFrame] = {}
+    for x in collect:
         sym = x["symbol"]
         df, src = None, None
-        for name, fn in (("binance", binance_daily), ("coinbase", coinbase_daily)):
+        sources = (("binance", binance_daily), ("coinbase", coinbase_daily),
+                   ("whitebit", lambda s, m=x.get("whitebit_market"): whitebit_daily(s, m)))
+        for name, fn in sources:
             cand = fn(sym)
             problem = series_problem(cand, x.get("price"))
             if problem is None:
@@ -291,7 +374,7 @@ def main():
         df.attrs["source"] = src
         frames[sym] = df
         df.round(10).to_csv(os.path.join(ROOT, "ohlc", f"{sym}.csv"), index_label="date")
-        time.sleep(0.2)
+        time.sleep(0.15)
 
     btc = frames.get("BTC")
     coins = []
@@ -301,12 +384,18 @@ def main():
             continue
         ind = coin_indicators(frames[sym], btc if sym != "BTC" else None)
         coins.append({"symbol": sym, "name": x.get("name"), "rank": x.get("rank_clean"), "kind": x["kind"],
+                      "eligible": x.get("eligible"), "not_eligible_because": x.get("not_eligible_because"),
+                      "on_whitebit": x.get("on_whitebit"), "whitebit_volume_24h": x.get("whitebit_volume_24h"),
                       "market_cap": x.get("market_cap"), "volume_24h": x.get("volume_24h"),
                       "price_now_coingecko": x.get("price"),
                       "chg_7d_coingecko": x.get("chg_7d"),
                       "source": frames[sym].attrs.get("source"), **ind})
 
-    snap = {"generated_at": gen, "note": "Daily candles are closed UTC days; 'close' is the last fully closed day.",
+    snap = {"generated_at": gen, "note": "Daily candles are closed UTC days; 'close' is the last fully closed day. "
+            f"Buy universe = coins with eligible=true: on WhiteBIT (USDT spot), CoinGecko rank <= {ELIGIBLE_RANK}, "
+            "kind ok (no stables/memes/wrapped/gold), global 24h volume >= $20M, WhiteBIT 24h volume >= $100k; BTC/ETH are benchmarks only.",
+            "whitebit_ok": wb is not None,
+            "eligible_count": sum(1 for c in coins if c.get("eligible")),
             "sentiment": sentiment(), "macro": macro(), "coins": coins, "errors": errors}
     json.dump(snap, open(os.path.join(ROOT, "indicators.json"), "w"), indent=1, ensure_ascii=False)
     write_summary(snap)
@@ -326,11 +415,13 @@ def write_summary(s):
     L += ["", "| Macro | close | 1d | 5d | 20d | trend vs EMA50 |", "|---|---|---|---|---|---|"]
     for k, v in s.get("macro", {}).items():
         L.append(f"| {k} | {v['close']} | {v['chg_1d']} | {v['chg_5d']} | {v['chg_20d']} | {v['trend']} |")
+    L += ["", f"Eligible for buying: {s.get('eligible_count')} coins (WhiteBIT data: {'ok' if s.get('whitebit_ok') else 'UNAVAILABLE'})"]
     L += ["", "| # | Coin | kind | close | 1d% | 7d% | 30d% | EMA stack | RSI | bear div | vs BTC 30d% | vs BTC trend | vol7d $M |",
           "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for c in s["coins"]:
         v = c.get("avg_quote_vol_7d_usd")
-        L.append(f"| {c['rank']} | {c['symbol']} | {c['kind']} | {c['close']} | {c['chg_1d']} | {c['chg_7d']} | {c['chg_30d']} | "
+        kind = c["kind"] if c.get("eligible") else f"{c['kind']} ✗"
+        L.append(f"| {c['rank']} | {c['symbol']} | {kind} | {c['close']} | {c['chg_1d']} | {c['chg_7d']} | {c['chg_30d']} | "
                  f"{c['ema_stack']} | {c['rsi14']} | {c['rsi_bear_div']} | {c.get('vs_btc_chg_30d')} | {c.get('vs_btc_trend')} | "
                  f"{round(v / 1e6) if v else None} |")
     if s["errors"]:
