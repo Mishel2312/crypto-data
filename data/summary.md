@@ -1,7 +1,7 @@
-# Market snapshot 2026-10-10T04:53:54Z
+# Market snapshot 2026-10-10T06:00:36Z
 
-Fear&Greed: 64 (Greed), 7d ago 67 · BTC dom 59.1% · mcap chg 24h -2.45%
-Funding (8h): BTC 0.0051%, ETH 0.0011%, SOL 0.0054%
+Fear&Greed: 64 (Greed), 7d ago 67 · BTC dom 59.08% · mcap chg 24h -2.13%
+Funding (8h): BTC 0.0051%, ETH 0.0004%, SOL 0.0043%
 
 | Macro | close | 1d | 5d | 20d | trend vs EMA50 |
 |---|---|---|---|---|---|
@@ -35,7 +35,7 @@ Funding (8h): BTC 0.0051%, ETH 0.0011%, SOL 0.0054%
 | 33 | QNT | ok | 248.28 | 4.88 | 0.45 | 269.74 | bull | 64.7 | False | 250.37 | up | 44 |
 | 34 | XAUT | pegged | 4185.91 | 1.08 | 1.06 | -4.71 | bear_short | 44.7 | False | -9.7 | mixed | 25 |
 | 35 | SHIB | meme | 5.46e-06 | 3.02 | -4.55 | 3.8 | below200 | 46.4 | False | -1.64 | down | 4 |
-| 37 | TAO | ok | 275.2 | 2.46 | -5.75 | 8.22 | above200 | 46.9 | True | 2.55 | mixed | 32 |
+| 36 | TAO | ok | 275.2 | 2.46 | -5.75 | 8.22 | above200 | 46.9 | True | 2.55 | mixed | 32 |
 | 38 | CRO | ok | 0.06167 | 2.27 | -8.19 | 4.31 | below200 | 46.1 | True | -1.15 | mixed | 1 |
 | 39 | ENA | ok | 0.2151 | 4.11 | -7.44 | 41.42 | above200 | 49.5 | False | 34.01 | mixed | 41 |
 
