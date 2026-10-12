@@ -102,6 +102,22 @@ def bearish_divergence(close: pd.Series, rs: pd.Series, w: int = 14) -> bool | N
     return bool(p2 > p1 and r2 < r1 - 2)
 
 
+GAP_ATR_LIMIT = 0.5               # entry is "chasing" when live price is this many ATRs away from the last close
+GAP_MIN_PCT, GAP_MAX_PCT = 2.0, 6.0  # clamp for the threshold, in %
+
+
+def gap_fields(price_now, close, atr_pct, ema20) -> dict:
+    """How far the live price has moved from the last daily close the signals were computed on."""
+    if not price_now or not close:
+        return {"gap_from_close_pct": None, "gap_atr": None, "gap_limit_pct": None, "gap_flag": None, "now_above_ema20": None}
+    gap = (price_now / close - 1) * 100
+    limit = min(max(GAP_ATR_LIMIT * (atr_pct or 0), GAP_MIN_PCT), GAP_MAX_PCT)
+    flag = "chasing" if gap > limit else "below_close" if gap < -limit else "ok"
+    return {"gap_from_close_pct": round(gap, 2), "gap_atr": round(gap / atr_pct, 2) if atr_pct else None,
+            "gap_limit_pct": round(limit, 2), "gap_flag": flag,
+            "now_above_ema20": None if ema20 is None else bool(price_now > ema20)}
+
+
 def coin_indicators(df: pd.DataFrame, btc: pd.DataFrame | None) -> dict:
     c = df["close"]
     e20, e50, e200 = ema(c, 20), ema(c, 50), ema(c, 200)
@@ -389,11 +405,13 @@ def main():
                       "market_cap": x.get("market_cap"), "volume_24h": x.get("volume_24h"),
                       "price_now_coingecko": x.get("price"),
                       "chg_7d_coingecko": x.get("chg_7d"),
-                      "source": frames[sym].attrs.get("source"), **ind})
+                      "source": frames[sym].attrs.get("source"), **ind,
+                      **gap_fields(x.get("price"), ind.get("close"), ind.get("atr14_pct"), ind.get("ema20"))})
 
     snap = {"generated_at": gen, "note": "Daily candles are closed UTC days; 'close' is the last fully closed day. "
             f"Buy universe = coins with eligible=true: on WhiteBIT (USDT spot), CoinGecko rank <= {ELIGIBLE_RANK}, "
-            "kind ok (no stables/memes/wrapped/gold), global 24h volume >= $20M, WhiteBIT 24h volume >= $100k; BTC/ETH are benchmarks only.",
+            "kind ok (no stables/memes/wrapped/gold), global 24h volume >= $20M, WhiteBIT 24h volume >= $100k; BTC/ETH are benchmarks only. "
+            "gap_from_close_pct = live price vs last close; gap_limit_pct = clamp(0.5*ATR14%, 2%, 6%); gap_flag: chasing (above +limit), below_close (below -limit), ok.",
             "whitebit_ok": wb is not None,
             "eligible_count": sum(1 for c in coins if c.get("eligible")),
             "sentiment": sentiment(), "macro": macro(), "coins": coins, "errors": errors}
@@ -416,12 +434,14 @@ def write_summary(s):
     for k, v in s.get("macro", {}).items():
         L.append(f"| {k} | {v['close']} | {v['chg_1d']} | {v['chg_5d']} | {v['chg_20d']} | {v['trend']} |")
     L += ["", f"Eligible for buying: {s.get('eligible_count')} coins (WhiteBIT data: {'ok' if s.get('whitebit_ok') else 'UNAVAILABLE'})"]
-    L += ["", "| # | Coin | kind | close | 1d% | 7d% | 30d% | EMA stack | RSI | bear div | vs BTC 30d% | vs BTC trend | vol7d $M |",
-          "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+    L += ["", "| # | Coin | kind | close | gap now% | 1d% | 7d% | 30d% | EMA stack | RSI | bear div | vs BTC 30d% | vs BTC trend | vol7d $M |",
+          "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for c in s["coins"]:
         v = c.get("avg_quote_vol_7d_usd")
         kind = c["kind"] if c.get("eligible") else f"{c['kind']} ✗"
-        L.append(f"| {c['rank']} | {c['symbol']} | {kind} | {c['close']} | {c['chg_1d']} | {c['chg_7d']} | {c['chg_30d']} | "
+        gap = c.get("gap_from_close_pct")
+        gap_s = "" if gap is None else f"{gap:+.1f}" + ("⚠" if c.get("gap_flag") == "chasing" else "")
+        L.append(f"| {c['rank']} | {c['symbol']} | {kind} | {c['close']} | {gap_s} | {c['chg_1d']} | {c['chg_7d']} | {c['chg_30d']} | "
                  f"{c['ema_stack']} | {c['rsi14']} | {c['rsi_bear_div']} | {c.get('vs_btc_chg_30d')} | {c.get('vs_btc_trend')} | "
                  f"{round(v / 1e6) if v else None} |")
     if s["errors"]:

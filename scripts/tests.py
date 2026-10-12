@@ -97,4 +97,13 @@ assert snap["sentiment"]["fear_greed"]["value"] == 67
 assert os.path.exists(os.path.join(tmp, "ohlc", "ETH.csv")) and os.path.exists(os.path.join(tmp, "summary.md"))
 print(open(os.path.join(tmp, "summary.md")).read()[:900])
 shutil.rmtree(tmp)
+# 7. Gap from close (anti-chasing)
+g = fetch.gap_fields(5.29, 4.885, 10.0, 4.6)       # NEAR-like: +8.3%, ATR 10% -> limit 5% -> chasing
+assert g["gap_flag"] == "chasing" and g["gap_limit_pct"] == 5.0 and g["now_above_ema20"], g
+g = fetch.gap_fields(752, 750, 3.0, 733)           # BNB-like: +0.27%, limit clamped to 2% -> ok
+assert g["gap_flag"] == "ok" and g["gap_limit_pct"] == 2.0, g
+g = fetch.gap_fields(90, 100, 20.0, 95)            # -10%, ATR 20% -> limit capped at 6% -> below_close, under EMA20
+assert g["gap_flag"] == "below_close" and g["gap_limit_pct"] == 6.0 and g["now_above_ema20"] is False, g
+assert fetch.gap_fields(None, 100, 3, 1)["gap_flag"] is None
+assert "gap_from_close_pct" in snap["coins"][2]
 print("ALL TESTS PASSED")
